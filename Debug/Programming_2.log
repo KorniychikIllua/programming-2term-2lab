@@ -1,0 +1,3 @@
+﻿  plural.cpp
+C:\Users\korni\OneDrive\Рабочий стол\Education\Программирование\2 семестр\лаб2\Programming_2\plural.cpp(165): warning C4715: 'Plural::SetPlural': not all control paths return a value
+  Programming_2.vcxproj -> C:\Users\korni\OneDrive\Рабочий стол\Education\Программирование\2 семестр\лаб2\Programming_2\Debug\Programming_2.exe
