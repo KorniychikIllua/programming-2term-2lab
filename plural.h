@@ -13,16 +13,14 @@ class Plural
 	
 public:
 	
-	Plural();											// Конструктор без параметров для класу Plural
-
-	Plural(char* array, int size);
-	Plural(char* array);
-	// Plural(int size);									// Конструктор з параметрами для класу Plural
+	Plural();												// Конструктор без параметров для класу Plural
+	Plural(char* array, int size);							// Конструктор з параметрами для класу Plural
+	Plural(char* array);									// Конструктор з параметрами для класу Plural
 	Plural(const Plural& exemplar);							// Конструктор копіювання
 	~Plural();												// Деструктор
 
-	Plural operator* (const Plural& exemplar);
-	int operator<(const Plural& exemplar);
+	Plural operator* (const Plural& exemplar);				// Перевантаження оператора *
+	int operator<(const Plural& exemplar);					// Перевантаження оператора <
 	Plural& operator= (const Plural& exemplar);				// Перевантаження оператора =
 	friend int operator> (const Plural arr, char symbol);	// Перевантаження оператора >
 	// int operator> (char symbol);
@@ -31,8 +29,8 @@ public:
 	int GetCurrentSize();									// Метод отриманя розміру множини
 	int GetMaxSize();										// Метод отриманя максимального розміру множини
 	char* ToArray();
-	int SetPlural(char* arrayOfChar, int size);
-	int SetPlural(const char* inputArray);
+	int SetPlural(char* arrayOfChar, int size);				// Метод, що встановлює множину з масиву символів
+	int SetPlural(const char* inputArray);					// Метод, що встановлює множину з рядка (масиву символів з \0 в кінці)
 	
 	
 	void Print();											// Метод виводу множини на екран

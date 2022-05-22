@@ -21,6 +21,8 @@ Plural::Plural() {
 }
 
 
+/* Конструктор з параметрами для класу Plural.
+	Вхід: покажчик на масив символів char* array, розмір масиву  int size*/
 Plural::Plural(char* array, int size)
 {
 	
@@ -43,17 +45,6 @@ Plural::Plural(char* array, int size)
 }
 
 
-/* 
-// Конструктор з параметрами для класу Plural
-Plural::Plural(int size)
-{
-	
-	if (sizeIncrease(size)){}
-	else { exit(0); }
-	_currentSize = size;
-}
-*/
-
 // Конструктор копіювання
 Plural::Plural(const Plural& exemplar) 
 {
@@ -72,6 +63,8 @@ Plural::Plural(const Plural& exemplar)
 	
 }
 
+
+// Перевантаження оператора =
 Plural& Plural::operator= (const Plural& exemplar)
 {
 	if (this == &exemplar) return *this;
@@ -126,6 +119,7 @@ int Plural::GetMaxSize()
 	return this->_maxSize;
 }
 
+
 // Метод отримання копії множини
 char* Plural::ToArray() // из этой функции перегрузить оператора присваивания и возвращать объект класса Plural
 {
@@ -148,6 +142,7 @@ char* Plural::ToArray() // из этой функции перегрузить оператора присваивания и 
 }
 
 
+// Метод, що встановлює множину з масиву символів
 int Plural::SetPlural(char* inputArray, int size)
 {
 	int counter = 0;
@@ -164,6 +159,8 @@ int Plural::SetPlural(char* inputArray, int size)
 	
 }
 
+
+// Метод, що встановлює множину з рядка (масиву символів з \0 в кінці)
 /*
 // создать перегруженый вариант принимающий строку заканчивающейся нулём
 int Plural::SetPlural(const char* inputArray)
@@ -175,6 +172,8 @@ int Plural::SetPlural(const char* inputArray)
 	}
 }
 */
+
+
 // Функція, що збільшує максимальной можливий розмір масиву так, щоб _maxSize > demandSize 
 int Plural::sizeIncrease(int demandSize)
 {
@@ -230,8 +229,11 @@ char* Plural::arrayToSet(char* arr, int size)
 	
 	return res;
 }
+Plural1 < Plural2 == Plural1.oprator<(Plural2)
 */
-// Plural1 < Plural2 == Plural1.oprator<(Plural2)
+
+
+//Перевантаження оператора < (перевірка символа на приналежність в множині)
 int Plural::operator<(const Plural& exemplar) 
 {
 	for (int i = 0; i < exemplar._currentSize; i++)
@@ -249,6 +251,7 @@ int Plural::operator<(const Plural& exemplar)
 }
 
 
+//Перевантаження оператора * (перетин множин). Результат: множина спільних елементів
 Plural Plural::operator* (const Plural& exemplar)
 {
 	Plural* res = new Plural;
@@ -294,6 +297,8 @@ Plural::~Plural()
 	delete[] _arr;
 }
 
+
+// Перевантаження оператора > через дружню функцію (перевірка на підмножину)
 int operator> (const Plural arr, char symbol)
 {
 	for (int i=0; i < arr._currentSize; i++)
@@ -303,6 +308,8 @@ int operator> (const Plural arr, char symbol)
 	return 0;
 }
 
+
+//Перевантаження оператора >
 /*
 int Plural::operator> (char symbol)
 {
