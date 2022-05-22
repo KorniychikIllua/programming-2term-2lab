@@ -156,9 +156,17 @@ int Plural::SetPlural(char* inputArray, int size)
 		}
 	} 
 	this->_currentSize = counter;
+	return 1;
 	
 }
 
+
+// Функція, що додає елемент в множину
+int Plural::add(char symbol)
+{
+	if (!sizeIncrease(_currentSize + 1)) return 0;
+	_arr[_currentSize-1] = symbol;
+}
 
 // Метод, що встановлює множину з рядка (масиву символів з \0 в кінці)
 /*

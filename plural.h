@@ -25,6 +25,7 @@ public:
 	friend int operator> (const Plural arr, char symbol);	// Перевантаження оператора >
 	// int operator> (char symbol);
 	
+	int add(char symbol);									// Функція, що додає елемент в множину
 	int sizeIncrease(int demandSize);						// Функція, що збільшує максимальной можливий розмір масиву так, щоб _maxSize > demandSize 
 	int GetCurrentSize();									// Метод отриманя розміру множини
 	int GetMaxSize();										// Метод отриманя максимального розміру множини

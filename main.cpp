@@ -36,8 +36,7 @@ int main()
 
 	(array5 * array6).Print();
 
-
-	/*
+	
 	array5.SetPlural(arr,5);
 	array5.Print();
 	*/
@@ -45,5 +44,6 @@ int main()
 	Plural array1;
 	array1.SetPlural(arr2, 5);
 	array1.Print();
-
+	array1.add('v');
+	array1.Print();
 }
