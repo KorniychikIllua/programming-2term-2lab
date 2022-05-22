@@ -39,11 +39,23 @@ int main()
 	
 	array5.SetPlural(arr,5);
 	array5.Print();
-	*/
+
 	char arr2[5] = { 'a','e','k','a','e'};
 	Plural array1;
 	array1.SetPlural(arr2, 5);
 	array1.Print();
 	array1.add('v');
+	array1.Print();
+		*/
+
+	char arr2[5] = { 'a','e','k','a','e' };
+	char arr3[8] = { 'a','e','k','a','e','y','x','z' };
+	Plural array1;
+	array1.SetPlural(arr2, 5);
+	std::cout << array1.GetCurrentSize() << std::endl;
+	array1.Print();
+	std::cout << std::endl;
+	array1.SetPlural(arr3, 8);
+	std::cout << array1.GetCurrentSize() << std::endl;
 	array1.Print();
 }

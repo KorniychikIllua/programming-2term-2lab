@@ -57,7 +57,7 @@ Plural::Plural(const Plural& exemplar)
 	{
 		for (int i = 0; i < _currentSize; i++) 
 		{
-			_arr[i] = exemplar._arr[i];
+			if(_arr[i] != NULL) _arr[i] = exemplar._arr[i];
 		}
 	}
 	
@@ -145,6 +145,8 @@ char* Plural::ToArray() // из этой функции перегрузить оператора присваивания и 
 // Метод, що встановлює множину з масиву символів
 int Plural::SetPlural(char* inputArray, int size)
 {
+	delete[] _arr;
+	_arr = new char[_maxSize];
 	int counter = 0;
 	if (!sizeIncrease(size)) return 0;
 	for (int i = 0; i < size; i++)
@@ -185,7 +187,7 @@ int Plural::SetPlural(const char* inputArray)
 // Функція, що збільшує максимальной можливий розмір масиву так, щоб _maxSize > demandSize 
 int Plural::sizeIncrease(int demandSize)
 {
-	if (_maxSize > demandSize) 
+	if ((_maxSize > demandSize) && (checkMemory(_arr)))
 	{
 		_currentSize = demandSize;
 		return 1; 
@@ -197,7 +199,7 @@ int Plural::sizeIncrease(int demandSize)
 			_maxSize += MAXSIZE;
 		} while (_maxSize < demandSize);
 
-		delete[] _arr;
+		if (checkMemory(_arr)) { delete[] _arr; }
 		_arr = new char[_maxSize];
 		if (!checkMemory(_arr)) return 0;
 		_currentSize = demandSize;
@@ -241,18 +243,14 @@ Plural1 < Plural2 == Plural1.oprator<(Plural2)
 */
 
 
-//Перевантаження оператора < (перевірка символа на приналежність в множині)
+//Перевантаження оператора < (перевірка на підмножину)
 int Plural::operator<(const Plural& exemplar) 
 {
 	for (int i = 0; i < exemplar._currentSize; i++)
 	{
-		for (int j = 0; j < this->_currentSize; j++)
-		{
-			if ((exemplar._arr[i] != _arr[j]) && (j - this->_currentSize == 1) )
-			{
-				return 0;
-			}
-			
+		if (!((Plural)*this > exemplar._arr[i]))
+		{ 
+			return 0; 
 		}
 	}
 	return 1;
@@ -307,7 +305,7 @@ Plural::~Plural()
 
 
 // Перевантаження оператора > через дружню функцію (перевірка на підмножину)
-int operator> (const Plural arr, char symbol)
+/*int operator> (const Plural arr, char symbol)
 {
 	for (int i=0; i < arr._currentSize; i++)
 	{
@@ -315,10 +313,10 @@ int operator> (const Plural arr, char symbol)
 	}
 	return 0;
 }
+*/
 
+//Перевантаження оператора > (перевірка символа на приналежність в множині)
 
-//Перевантаження оператора >
-/*
 int Plural::operator> (char symbol)
 {
 	for (int i = 0; i < _currentSize; i++)
@@ -327,4 +325,3 @@ int Plural::operator> (char symbol)
 	}
 	return 0;
 }
-*/
