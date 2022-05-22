@@ -22,12 +22,35 @@ Plural::Plural() {
 
 
 /* Конструктор з параметрами для класу Plural.
+	Вхід: покажчик на рядок const char* array */
+Plural::Plural(const char* array)
+{
+	this->_maxSize = MAXSIZE;
+	int counter = 0;
+	if (sizeIncrease(sizeof(array)))
+	{
+		int i = 0;
+		while (array[i] != '\0')
+		{
+			if (!((Plural)*this > array[i]))
+			{
+				_arr[counter] = array[i];
+				counter++;
+			}
+			i++;
+		}
+		this->_currentSize = counter;
+	}
+	else { exit(0); }
+}
+
+
+/* Конструктор з параметрами для класу Plural.
 	Вхід: покажчик на масив символів char* array, розмір масиву  int size*/
 Plural::Plural(char* array, int size)
 {
 	
 	this->_maxSize = MAXSIZE;
-	this->_arr = new char[size];
 	int counter = 0;
 	if (sizeIncrease(size))
 	{
@@ -146,7 +169,8 @@ char* Plural::ToArray() // из этой функции перегрузить оператора присваивания и 
 int Plural::SetPlural(char* inputArray, int size)
 {
 	delete[] _arr;
-	_arr = new char[_maxSize];
+	_arr = new char[size];
+
 	int counter = 0;
 	if (!sizeIncrease(size)) return 0;
 	for (int i = 0; i < size; i++)
@@ -163,12 +187,35 @@ int Plural::SetPlural(char* inputArray, int size)
 }
 
 
+// Метод, що встановлює множину з рядка (масиву символів з \0 в кінці)
+int Plural::SetPlural(const char* inputArray)
+{
+	delete[] _arr;
+	_arr = new char[_maxSize];
+	int counter = 0;
+	if (!sizeIncrease(sizeof(inputArray))) return 0;
+	int i = 0;
+	while (inputArray[i] != '\0')
+	{
+		if (!((Plural)*this > inputArray[i]))
+		{
+			_arr[counter] = inputArray[i];
+			counter++;
+		}
+		i++;
+	}
+	this->_currentSize = counter;
+	return 1;
+}
+
+
 // Функція, що додає елемент в множину
 int Plural::add(char symbol)
 {
 	if (!sizeIncrease(_currentSize + 1)) return 0;
 	_arr[_currentSize-1] = symbol;
 }
+
 
 // Метод, що встановлює множину з рядка (масиву символів з \0 в кінці)
 /*

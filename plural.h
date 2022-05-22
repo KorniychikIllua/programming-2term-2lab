@@ -15,7 +15,7 @@ public:
 	
 	Plural();												// Конструктор без параметров для класу Plural
 	Plural(char* array, int size);							// Конструктор з параметрами для класу Plural
-	Plural(char* array);									// Конструктор з параметрами для класу Plural
+	Plural(const char* arr);								// Конструктор з параметрами(рядком символів) для класу Plural
 	Plural(const Plural& exemplar);							// Конструктор копіювання
 	~Plural();												// Деструктор
 

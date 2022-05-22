@@ -47,7 +47,7 @@ int main()
 	array1.add('v');
 	array1.Print();
 		*/
-
+	/*
 	char arr2[5] = { 'a','e','k','a','e' };
 	char arr3[8] = { 'a','e','k','a','e','y','x','z' };
 	Plural array1;
@@ -58,4 +58,13 @@ int main()
 	array1.SetPlural(arr3, 8);
 	std::cout << array1.GetCurrentSize() << std::endl;
 	array1.Print();
+	*/
+	/*
+	Plural array9("asdadaadadadadadadada");
+	array9.Print();
+	*/
+	Plural array9;
+	char arr3[8] = { 'a','e','e','a' };
+	array9.SetPlural("aaaabbbccc");
+	array9.Print();
 }
