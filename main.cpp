@@ -64,7 +64,10 @@ int main()
 	array9.Print();
 	*/
 	Plural array9;
-	char arr3[8] = { 'a','e','e','a' };
-	array9.SetPlural("aaaabbbccc");
+	char arr3[4] = { 'a','e','e','a' };
+	array9.SetPlural(arr3,4);
+	array9.Print();
+	
+	array9.add('x');
 	array9.Print();
 }

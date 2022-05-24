@@ -169,7 +169,7 @@ char* Plural::ToArray() // из этой функции перегрузить оператора присваивания и 
 int Plural::SetPlural(char* inputArray, int size)
 {
 	delete[] _arr;
-	_arr = new char[size];
+	//_arr = new char[size];
 
 	int counter = 0;
 	if (!sizeIncrease(size)) return 0;
@@ -212,23 +212,9 @@ int Plural::SetPlural(const char* inputArray)
 // Функція, що додає елемент в множину
 int Plural::add(char symbol)
 {
-	if (!sizeIncrease(_currentSize + 1)) return 0;
+	if (!sizeIncrease(_currentSize+1)) return 0;
 	_arr[_currentSize-1] = symbol;
 }
-
-
-// Метод, що встановлює множину з рядка (масиву символів з \0 в кінці)
-/*
-// создать перегруженый вариант принимающий строку заканчивающейся нулём
-int Plural::SetPlural(const char* inputArray)
-{
-	// Перевірка на множину
-	if (sizeIncrease(strlen(inputArray)))
-	{
-		
-	}
-}
-*/
 
 
 // Функція, що збільшує максимальной можливий розмір масиву так, щоб _maxSize > demandSize 

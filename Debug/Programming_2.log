@@ -1,5 +1,3 @@
-﻿  main.cpp
-  plural.cpp
-  Generating Code...
-D:\Education\Programming\Term2\lab2\Programming_2\plural.cpp(216): warning C4715: 'Plural::add': not all control paths return a value
+﻿  plural.cpp
+D:\Education\Programming\Term2\lab2\Programming_2\plural.cpp(217): warning C4715: 'Plural::add': not all control paths return a value
   Programming_2.vcxproj -> D:\Education\Programming\Term2\lab2\Programming_2\Debug\Programming_2.exe
