@@ -88,7 +88,7 @@ Plural::Plural(const Plural& exemplar)
 
 
 // Перевантаження оператора =
-Plural& Plural::operator= (const Plural& exemplar)
+Plural Plural::operator= (const Plural& exemplar)
 {
 	if (this == &exemplar) return *this;
 	
@@ -169,6 +169,7 @@ char* Plural::ToArray() // из этой функции перегрузить оператора присваивания и 
 int Plural::SetPlural(char* inputArray, int size)
 {
 	delete[] _arr;
+	_arr = nullptr;
 	//_arr = new char[size];
 
 	int counter = 0;
@@ -212,8 +213,13 @@ int Plural::SetPlural(const char* inputArray)
 // Функція, що додає елемент в множину
 int Plural::add(char symbol)
 {
-	if (!sizeIncrease(_currentSize+1)) return 0;
-	_arr[_currentSize-1] = symbol;
+	
+	if (!(*this > symbol))
+	{
+		if (!sizeIncrease(_currentSize + 1)) return 0;
+		_arr[_currentSize - 1] = symbol;
+	}
+	return 1;
 }
 
 
@@ -321,6 +327,7 @@ Plural Plural::operator* (const Plural& exemplar)
 				}
 			}
 		}
+		res->_currentSize = counter;
 	}
 	else
 	{

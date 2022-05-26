@@ -21,7 +21,7 @@ public:
 
 	Plural operator* (const Plural& exemplar);				// Перевантаження оператора *
 	int operator<(const Plural& exemplar);					// Перевантаження оператора <
-	Plural& operator= (const Plural& exemplar);				// Перевантаження оператора =
+	Plural operator= (const Plural& exemplar);				// Перевантаження оператора =
 	//friend int operator> (const Plural arr, char symbol);	// Перевантаження оператора >
 	int operator> (char symbol);
 	

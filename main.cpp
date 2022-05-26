@@ -65,9 +65,20 @@ int main()
 	*/
 	Plural array9;
 	char arr3[4] = { 'a','e','e','a' };
-	array9.SetPlural(arr3,4);
+	char arr4[4] = { 'a','e','x','y'};
+	array9.SetPlural(arr3, 4);
 	array9.Print();
-	
-	array9.add('x');
+	array9.add('a');
+	{
+		Plural a10(arr4, 4);
+		a10 = array9;
+		a10.Print();
+	}
 	array9.Print();
+
+	Plural a1("asd");
+	Plural a2("sdx");
+	Plural a3;
+	a3 = a1 * a2;
+	a3.Print();
 }
